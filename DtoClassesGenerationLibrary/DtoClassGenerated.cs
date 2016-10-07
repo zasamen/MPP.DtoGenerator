@@ -16,15 +16,26 @@ namespace DtoClassesGenerationLibrary
 
         public DtoClassGenerated(string NamespaceName)
         {
-            
+            this.NamespaceName = NamespaceName;
         }
 
         public DtoClassGenerated(string NamespaceName, string PluginPath)
+            : this(NamespaceName)
         {
             LoadPlugins(PluginPath);
         }
 
-
+        public IEnumerable<DtoUnitDescription> GenerateUnits
+            (IEnumerable<DtoClassDescription> Classes)
+        {
+            var units = new List<DtoUnitDescription>();
+            foreach (DtoClassDescription Class in Classes)
+            {
+                units.Add(new DtoUnitDescription(Class.className, 
+                    Class.GenerateCodeUnit(NamespaceName)));
+            }
+            return units;
+        }
         
         private void LoadPlugins(string PluginPath)
         {

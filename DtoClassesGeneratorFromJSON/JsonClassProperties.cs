@@ -22,7 +22,7 @@ namespace DtoClassesGeneratorFromJSON
 
         public DtoPropertyDescription ConvertPropertyToDto()
         {
-            return new DtoPropertyDescription(name, format, type);
+            return new DtoPropertyDescription(name, format);
         }
 
         public static DtoPropertyDescription[] ConvertPropertiesToDto(JsonClassProperties[] properties)

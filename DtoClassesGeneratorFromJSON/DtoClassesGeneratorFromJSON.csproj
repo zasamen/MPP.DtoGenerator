@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeWriter.cs" />
     <Compile Include="JsonClassDescription.cs" />
     <Compile Include="JsonClassProperties.cs" />
     <Compile Include="JsonReader.cs" />
@@ -52,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DtoClassesGenerationLibrary\DtoClassesGenerationLibrary.csproj">
+      <Project>{f3fbe1e5-4a15-45a1-8089-9ef12b1ad2d9}</Project>
+      <Name>DtoClassesGenerationLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

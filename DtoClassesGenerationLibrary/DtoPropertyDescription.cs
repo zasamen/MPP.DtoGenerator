@@ -22,12 +22,14 @@ namespace DtoClassesGenerationLibrary
         internal CodeMemberProperty CreateProperty()
         {
             CodeMemberProperty ThisProperty = new CodeMemberProperty();
-            ThisProperty.Attributes = 
+            ThisProperty.Attributes =
                 MemberAttributes.Public | MemberAttributes.Final;
             ThisProperty.Name = name;
             ThisProperty.HasGet = ThisProperty.HasSet = true;
-            ThisProperty.Type = 
-                new CodeTypeReference(TypeTable.Instance.getType(format));
+            var typeTable = TypeTable.Instance;
+            string mytype = typeTable.GetType(format).FullName;
+            ThisProperty.Type =
+                new CodeTypeReference(mytype);
             return ThisProperty;
         }
     }

@@ -9,25 +9,30 @@ namespace DtoClassesGeneratorFromJSON
 {
     class Program
     {
-        static string ClassPath;
+        static string ClassPath= "./";
         static string NameSpace = "MyNameSpace";
-
+        static string JsonPath = "./json.json";
         static void Main(string[] args)
         {
-            DtoClassGenerator generator = new DtoClassGenerator(NameSpace);
-            generator.generateCodeUnit(convertJsonToCustomDescription(
-                JsonReader<JsonClassDescription>.ReadJsonToTypeT("./json.json")));
-            //TODO: GENERATE CODE FROM CLASSDESCRIPTIONS
+            new CodeWriter(ClassPath).WriteCodeToDir(
+                new DtoClassGenerated(NameSpace).
+                GenerateUnits(ConvertJsonToCustomDescription(
+                        JsonReader<JsonClassDescription>.
+                        ReadJsonToTypeT(JsonPath))));
         }
 
-        private static IEnumerable<DtoClassDescription> convertJsonToCustomDescription(IEnumerable<JsonClassDescription> descriptions)
+        private static IEnumerable<DtoClassDescription> 
+            ConvertJsonToCustomDescription(
+            IEnumerable<JsonClassDescription> descriptions)
         {
-            var DtoDescriptions = new LinkedList<DtoClassDescription>();
+            var DtoDescriptions = new List<DtoClassDescription>();
             foreach (var description in descriptions)
             {
-                DtoDescriptions.AddLast(description.ConvertClassToDto());
+                DtoDescriptions.Add(description.ConvertClassToDto());
             }
             return DtoDescriptions;
         }
+
+        
     }
 }

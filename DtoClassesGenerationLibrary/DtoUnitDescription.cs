@@ -10,7 +10,7 @@ namespace DtoClassesGenerationLibrary
     public class DtoUnitDescription
     {
         public string filename { get; }
-        public CodeCompileUnit unit { get; }
+        public CodeCompileUnit unit { get; } 
         private static readonly string fileExtenstion = ".cs";
 
         public DtoUnitDescription(string ClassName, CodeCompileUnit unit)

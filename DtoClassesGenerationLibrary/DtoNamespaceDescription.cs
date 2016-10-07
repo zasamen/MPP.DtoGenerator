@@ -16,8 +16,7 @@ namespace DtoClassesGenerationLibrary
         internal DtoNamespaceDescription(string NameOfNamespace)
         {
             this.NameOfNamespace = NameOfNamespace;
-            CreatedNamespace = new CodeNamespace(NameOfNamespace);
-            CreatedNamespace.Imports.Add(new CodeNamespaceImport("System"));                        
+            CreatedNamespace = new CodeNamespace(NameOfNamespace);                        
         }
 
         internal void AddDtoClass(CodeTypeDeclaration Class)
@@ -25,18 +24,15 @@ namespace DtoClassesGenerationLibrary
             CreatedNamespace.Types.Add(Class);
         }
 
-        internal void AddImports(IEnumerable<string> imports)
+        internal void AddImports()
         {
+            var imports = TypeTable.Instance.GetImports();
             if (imports != null)
             {
                 foreach (var import in imports)
                 {
                     CreatedNamespace.Imports.Add(new CodeNamespaceImport(import));
                 }
-            }
-            else
-            {
-                throw new ArgumentNullException("Imports list","Can't be null");
             }
         }
 

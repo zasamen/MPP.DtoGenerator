@@ -6,24 +6,26 @@ using System.Threading.Tasks;
 
 namespace DtoClassesGenerationLibrary
 {
-    internal class TypeTable 
+    internal class TypeTable
     {
-        private Dictionary<string, Type> TypeDictionary;
-        private static TypeTable instance = new TypeTable();
-        public static TypeTable Instance
+        Dictionary<string, Type> TypeDictionary = new Dictionary<string, Type>();
+        List<string> Imports= new List<string>();
+        private static readonly TypeTable instance = new TypeTable();
+        internal static TypeTable Instance
         {
             get
             {
                 return instance;
             }
         }
-
+        
         private TypeTable()
         {
             TypeDictionary.Add("int32", typeof(Int32));
             TypeDictionary.Add("float", typeof(Single));
             TypeDictionary.Add("byte", typeof(Byte));
             TypeDictionary.Add("string", typeof(string));
+            Imports.Add("System");
         }
 
         internal void AddTypes(IDictionary<string,Type> dictionary)
@@ -34,11 +36,20 @@ namespace DtoClassesGenerationLibrary
         }
 
 
-        internal Type getType(string format)
+        internal Type GetType(string format)
         {
             return TypeDictionary[format];
         }
 
+        internal void AddImports(IEnumerable<string> ImportList)
+        {
+            Imports.AddRange(ImportList);
+        }
+
+        internal IEnumerable<string> GetImports()
+        {
+            return Imports;
+        } 
 
 
     }

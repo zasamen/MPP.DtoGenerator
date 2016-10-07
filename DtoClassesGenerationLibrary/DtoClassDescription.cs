@@ -10,7 +10,7 @@ namespace DtoClassesGenerationLibrary
 {
     public class DtoClassDescription
     {
-        private string className;
+        public string className { get; }
         private DtoPropertyDescription[] properties;
 
         public DtoClassDescription(string className, 
