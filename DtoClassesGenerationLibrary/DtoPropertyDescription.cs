@@ -12,25 +12,47 @@ namespace DtoClassesGenerationLibrary
         private string name;
         private string format;
         private string type;
-
+        public DtoFieldDescription field { get; private set; }
         public DtoPropertyDescription(string name, string format)
         {
             this.name = name;
             this.format = format;
+            field = new DtoFieldDescription(name, format);
         }
 
         internal CodeMemberProperty CreateProperty()
         {
-            CodeMemberProperty ThisProperty = new CodeMemberProperty();
-            ThisProperty.Attributes =
+            return GeneratePropertyStatements(GeneratePropertyType(GeneratePropertyAttributes()));
+        }
+
+        private CodeMemberProperty GeneratePropertyStatements(CodeMemberProperty property)
+        {
+            property.HasGet = property.HasSet = true;
+            property.GetStatements.
+                Add(new CodeMethodReturnStatement(
+                    new CodeFieldReferenceExpression(
+                        new CodeThisReferenceExpression(), field.name)));
+            property.SetStatements.
+                Add(new CodeAssignStatement(
+                    new CodeFieldReferenceExpression(
+                        new CodeThisReferenceExpression(), field.name),
+                    new CodePropertySetValueReferenceExpression()));
+            return property;
+        }
+
+        private CodeMemberProperty GeneratePropertyType(CodeMemberProperty property)
+        {
+            property.Type = new CodeTypeReference(TypeTable.Instance.GetType(format).FullName);
+            return property;
+        }
+
+        private CodeMemberProperty GeneratePropertyAttributes()
+        {
+            CodeMemberProperty property= new CodeMemberProperty();
+            property.Attributes =
                 MemberAttributes.Public | MemberAttributes.Final;
-            ThisProperty.Name = name;
-            ThisProperty.HasGet = ThisProperty.HasSet = true;
-            var typeTable = TypeTable.Instance;
-            string mytype = typeTable.GetType(format).FullName;
-            ThisProperty.Type =
-                new CodeTypeReference(mytype);
-            return ThisProperty;
+            property.Name = name;
+            return property;
         }
     }
 }

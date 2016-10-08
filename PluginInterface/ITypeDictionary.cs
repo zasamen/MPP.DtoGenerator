@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DtoClassesGenerationLibrary
 {
-    interface ITypeDictionary
+    public interface ITypeDictionary
     { 
         Dictionary<string, Type> TypeDictionary { get; }
 
-        IList<string> ImportsList { get; }
+        IList<string> ImportList { get; }
     }
 }

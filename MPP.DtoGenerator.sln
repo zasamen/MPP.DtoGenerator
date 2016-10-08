@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DtoClassesGeneratorFromJSON
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DtoClassesGenerationLibrary", "DtoClassesGenerationLibrary\DtoClassesGenerationLibrary.csproj", "{F3FBE1E5-4A15-45A1-8089-9EF12B1AD2D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypePlugin", "TypePlugin\TypePlugin.csproj", "{5896D204-6F51-4B12-836C-79D1B630CCA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginInterface", "PluginInterface\PluginInterface.csproj", "{A6A253BE-2ADD-4CEE-A32A-36070E97EAD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{F3FBE1E5-4A15-45A1-8089-9EF12B1AD2D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3FBE1E5-4A15-45A1-8089-9EF12B1AD2D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3FBE1E5-4A15-45A1-8089-9EF12B1AD2D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5896D204-6F51-4B12-836C-79D1B630CCA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5896D204-6F51-4B12-836C-79D1B630CCA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5896D204-6F51-4B12-836C-79D1B630CCA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5896D204-6F51-4B12-836C-79D1B630CCA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6A253BE-2ADD-4CEE-A32A-36070E97EAD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6A253BE-2ADD-4CEE-A32A-36070E97EAD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6A253BE-2ADD-4CEE-A32A-36070E97EAD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6A253BE-2ADD-4CEE-A32A-36070E97EAD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

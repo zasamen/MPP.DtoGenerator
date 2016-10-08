@@ -37,7 +37,6 @@ namespace DtoClassesGenerationLibrary
             currentNamespace.AddDtoClass(CreateClass());
             currentNamespace.AddImports();
             unit.Namespaces.Add(currentNamespace.CreatedNamespace);
-            
             return unit;
         }
 
@@ -46,6 +45,7 @@ namespace DtoClassesGenerationLibrary
         {
             foreach (DtoPropertyDescription property in propertyList)
             {
+                ctd.Members.Add(property.field.CreateField());
                 ctd.Members.Add(property.CreateProperty());
             }
         }

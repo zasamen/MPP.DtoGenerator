@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Reflection;
+using System.IO;
 
 namespace DtoClassesGenerationLibrary
 {
@@ -22,8 +23,19 @@ namespace DtoClassesGenerationLibrary
         public DtoClassGenerated(string NamespaceName, string PluginPath)
             : this(NamespaceName)
         {
-            LoadPlugins(PluginPath);
+            ApplyPluginsLoading(new PluginLoader<ITypeDictionary>(PluginPath));
+            
         }
+
+        private void ApplyPluginsLoading(PluginLoader<ITypeDictionary> pluginLoader)
+        {
+            TypeTable table = TypeTable.Instance;
+            foreach (var plugin in pluginLoader.Load())
+            {
+                table.Apply(plugin);
+            }
+        }
+
 
         public IEnumerable<DtoUnitDescription> GenerateUnits
             (IEnumerable<DtoClassDescription> Classes)
@@ -37,11 +49,7 @@ namespace DtoClassesGenerationLibrary
             return units;
         }
         
-        private void LoadPlugins(string PluginPath)
-        {
-
-            //TODO DINAMIC PLUGIN LOADING
-        }
+        
 
     }
 }

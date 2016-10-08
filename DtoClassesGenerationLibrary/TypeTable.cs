@@ -9,7 +9,7 @@ namespace DtoClassesGenerationLibrary
     internal class TypeTable
     {
         Dictionary<string, Type> TypeDictionary = new Dictionary<string, Type>();
-        List<string> Imports= new List<string>();
+        public List<string> Imports { get; private set;} = new List<string>();
         private static readonly TypeTable instance = new TypeTable();
         internal static TypeTable Instance
         {
@@ -46,11 +46,12 @@ namespace DtoClassesGenerationLibrary
             Imports.AddRange(ImportList);
         }
 
-        internal IEnumerable<string> GetImports()
+        internal void Apply(ITypeDictionary plugin)
         {
-            return Imports;
-        } 
-
+            AddImports(plugin.ImportList);
+            AddTypes(plugin.TypeDictionary);
+            
+        }
 
     }
 }

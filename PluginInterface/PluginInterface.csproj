@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F3FBE1E5-4A15-45A1-8089-9EF12B1AD2D9}</ProjectGuid>
+    <ProjectGuid>{A6A253BE-2ADD-4CEE-A32A-36070E97EAD1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DtoClassesGenerationLibrary</RootNamespace>
-    <AssemblyName>DtoClassesGenerationLibrary</AssemblyName>
+    <RootNamespace>PluginInterface</RootNamespace>
+    <AssemblyName>PluginInterface</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,20 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DtoClassDescription.cs" />
-    <Compile Include="DtoClassGenerated.cs" />
-    <Compile Include="DtoFieldDescription.cs" />
-    <Compile Include="DtoNamespaceDescription.cs" />
-    <Compile Include="DtoPropertyDescription.cs" />
-    <Compile Include="DtoUnitDescription.cs" />
+    <Compile Include="ITypeDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TypeTable.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PluginInterface\PluginInterface.csproj">
-      <Project>{a6a253be-2add-4cee-a32a-36070e97ead1}</Project>
-      <Name>PluginInterface</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
