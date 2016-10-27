@@ -11,7 +11,7 @@ namespace DtoClassesGenerationLibrary
     {
         private string name;
         private string format;
-        private string type;
+        //private string type;
         public DtoFieldDescription field { get; private set; }
         public DtoPropertyDescription(string name, string format)
         {

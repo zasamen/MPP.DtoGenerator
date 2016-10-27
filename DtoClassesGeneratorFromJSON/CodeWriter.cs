@@ -25,11 +25,23 @@ namespace DtoClassesGeneratorFromJSON
                 Directory.CreateDirectory(CodePath);
             }
         }
-        public void WriteCodeToDir(IEnumerable<DtoUnitDescription> units)
+        public void WriteCodeToDirectory(IEnumerable<DtoUnitDescription> units)
         {
+            List<NotImplementedException> ExceptionList = new List<NotImplementedException>();
             foreach (var unit in units)
             {
-                WriteCodeToFile(unit.unit, CodePath + unit.filename);
+                try
+                {
+                    WriteCodeToFile(unit.unit, CodePath + unit.filename);
+                }
+                catch(NotImplementedException e)
+                {
+                    ExceptionList.Add(e);
+                }
+            }
+            if (ExceptionList.Count > 0)
+            {
+                throw new NotImplementedException(ExceptionList.ToString());
             }
         }
 

@@ -26,7 +26,7 @@ namespace DtoClassesGenerationLibrary
 
         internal void AddImports()
         {
-            var imports = TypeTable.Instance.GetImports();
+            var imports = TypeTable.Instance.Imports;
             if (imports != null)
             {
                 foreach (var import in imports)

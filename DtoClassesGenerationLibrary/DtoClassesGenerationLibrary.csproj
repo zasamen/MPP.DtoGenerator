@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,7 +47,9 @@
     <Compile Include="DtoNamespaceDescription.cs" />
     <Compile Include="DtoPropertyDescription.cs" />
     <Compile Include="DtoUnitDescription.cs" />
+    <Compile Include="PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThreadData.cs" />
     <Compile Include="TypeTable.cs" />
   </ItemGroup>
   <ItemGroup>
