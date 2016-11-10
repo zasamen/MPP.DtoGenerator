@@ -155,6 +155,12 @@ namespace DtoClassesGeneratorFromJSON
                             Console.WriteLine("ThreadCount switched to 1");
                             maxThreadCount = 1; 
                         }
+                        catch (FormatException e)
+                        {
+                            Console.WriteLine(e.Message);
+                            Console.WriteLine("ThreadCount switched to 1");
+                            maxThreadCount = 1;
+                        }
                     }
                     return maxThreadCount;
                 }
@@ -188,7 +194,7 @@ namespace DtoClassesGeneratorFromJSON
                 GenerateUnits(ConvertJsonToCustomDescription(
                     JsonReader<JsonClassDescription>.ReadJsonToTypeT(
                         values.JsonPath))));
-            //Console.ReadLine();
+            Console.ReadLine();
         }
 
         private static IEnumerable<DtoClassDescription>

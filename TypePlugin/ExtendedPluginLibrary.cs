@@ -18,16 +18,15 @@ namespace TypePlugin
 
         public ExtendedPluginLibrary()
         {
+            throw new InvalidOperationException();
             TypeDictionary = new Dictionary<string, Type>();
             TypeDictionary.Add("int64", typeof(Int64));
             TypeDictionary.Add("double", typeof(Double));
             TypeDictionary.Add("short", typeof(short));
             TypeDictionary.Add("Object", typeof(Object));
             TypeDictionary.Add("boolean", typeof(Boolean));
-            TypeDictionary.Add("List<object>", typeof(List<object>));
             ImportList = new List<string>();
             ImportList.Add("System");
-            ImportList.Add("System.Collections.Generic");
         }
     }
 }
